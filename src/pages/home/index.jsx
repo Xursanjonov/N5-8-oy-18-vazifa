@@ -1,19 +1,21 @@
 import React, { memo } from 'react'
 import Hero from '../../components/hero'
+import ProductWrapper from '../../components/product-wrapper'
+import CommentWrapper from '../../components/comment-wrapper'
+import { useGetProductsQuery } from '../../context/api/productApi'
+import { PRODUCTS } from '../../static'
+import NoData from '../../components/no-data'
+import Browse from '../../components/browse'
 import img1 from '../../assets/images/versace.png'
 import img2 from '../../assets/images/zara.png'
 import img3 from '../../assets/images/gucci.png'
 import img4 from '../../assets/images/prada.png'
 import img5 from '../../assets/images/klein.png'
-import ProductWrapper from '../../components/product-wrapper'
-import { PRODUCTS } from '../../static'
-import CommentWrapper from '../../components/comment-wrapper'
-import { useGetProductsQuery } from '../../context/api/productApi'
 
 const Home = () => {
     const [skip, setSkip] = React.useState(1)
     const [limit, setLimit] = React.useState(4)
-    const { data } = useGetProductsQuery({ limit })
+    const { data, isFetching } = useGetProductsQuery({ limit })
 
     return (
         <section className='w-full mx-auto'>
@@ -27,9 +29,18 @@ const Home = () => {
                     <img src={img5} alt="" />
                 </div>
             </div>
-            <ProductWrapper btn={true} title="NEW ARRIVALS" products={data?.payload} />
+            {
+                isFetching ? <ProductWrapper btn={true} title="NEW ARRIVALS" products={data?.payload} /> : (
+                    <NoData key={'new-arrivales'} btn={true} title="NEW ARRIVALS" products={PRODUCTS} />
+                )
+            }
             <p className='max-w-[1240px] w-full mx-auto h-[2px] bg-[#0000001A]'></p>
-            <ProductWrapper btn={true} title="TOP SELLING" star={4} end={8} products={PRODUCTS} />
+            {
+                isFetching ? <ProductWrapper btn={true} title="TOP SELLING" products={data?.payload} /> : (
+                    <NoData key={'top-selling'} btn={true} star={4} end={8} title="TOP SELLING" products={PRODUCTS} />
+                )
+            }
+            <Browse />
             <CommentWrapper />
         </section>
     )

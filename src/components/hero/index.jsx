@@ -5,14 +5,14 @@ import './hero.css'
 const Hero = () => {
 
     return (
-        <div className={`hero__bg w-full h-[750px] mx-auto relative`}>
-            {/* <img className='max-w-[1920px] w-full max-h-[750px] h-full absolute' src={heroBg} alt="" /> */}
-            <div className="w-[1240px] mx-auto pt-8 transform translate-y-[20%] relative z-[1] flex flex-col items-start justify-start gap-8">
-                <h1 className='w-[570px] text-[64px] font-extrabold leading-[64px]'>FIND CLOTHES THAT MATCHES YOUR STYLE</h1>
-                <p className='text-[22px]'>Browse through our diverse range of meticulously crafted garments, designed <br />
+        <div className={`max-w-[1920px] w-full min-h-[800px] mx-auto relative`}>
+            <img className='max-w-[1920px] w-full max-h-[800px] h-full absolute' src={heroBg} alt="" />
+            <div className="max-w-[1240px] w-full mx-auto pt-8 transform translate-y-[20%] relative z-[1] flex flex-col items-start justify-start gap-8">
+                <h1 className='max-w-[570px] w-full text-[64px] font-extrabold leading-[64px]'>FIND CLOTHES THAT MATCHES YOUR STYLE</h1>
+                <p className='lg:max-w-[760px] xl:max-w-[790px] w-full px-4 text-[22px] max-w-[358px]'>Browse through our diverse range of meticulously crafted garments, designed <br />
                     to bring out your individuality and cater to your sense of style.</p>
                 <button className='w-[210px] h-[46px] text-lg rounded-3xl text-white bg-black'>Shop Now</button>
-                <ul className='flex items-center justify-start gap-8'>
+                <ul className='flex flex-wrap items-center justify-start gap-8'>
                     <li>
                         <h4 className='text-[40px] font-bold'>200+</h4>
                         <p className='text-sm'>International Brands</p>

@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import ProductItem from './ProductItem'
 import { useNavigate } from 'react-router-dom'
 
-const ProductsWrapper = ({ products, star, end, title, link, btn }) => {
+const ProductsWrapper = ({ products, title, link, btn }) => {
     const navigate = useNavigate()
 
     return (
@@ -10,7 +10,7 @@ const ProductsWrapper = ({ products, star, end, title, link, btn }) => {
             <h1 className='text-[48px] text-center font-extrabold'>{title}</h1>
             <div className="max-w-[1240px] w-full mx-auto flex flex-wrap items-center justify-start gap-5 bg-white">
                 {
-                    products?.slice(star ?? 0, end ?? 4)?.map(product => <ProductItem key={product?.id} product={product} />)
+                    products?.map(product => <ProductItem key={product?.id} product={product} />)
                 }
             </div>
             <button onClick={() => navigate(link ?? '/products')}
